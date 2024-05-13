@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SiteG</title>
+<title>端末情報表示</title>
 <style>
     .device-info {
         font-family: Arial, sans-serif;
@@ -19,8 +19,11 @@
 </head>
 <body>
 
-<h2>個人情報を習得しました。</h2>
-<h2>拡散されたくなければ金払え</h2>
+<h2>端末情報</h2>
+
+<div class="device-info">
+    <p><span class="info-label">IPアドレス:</span> <span id="ipAddress"></span></p>
+</div>
 
 <script>
     var userAgent = navigator.userAgent;
