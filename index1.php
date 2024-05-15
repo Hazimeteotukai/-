@@ -1,5 +1,5 @@
 <?php
-$allowed_referrer = 'http://yourdomain.com/index.html'; // 必要に応じて正しいURLに変更してください
+$allowed_referrer = 'https://hazimeteotukai.github.io/scriptdownloadsite/'; // 必要に応じて正しいURLに変更してください
 
 if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], $allowed_referrer) !== 0) {
     // リファラーが指定されたURLと一致しない場合
