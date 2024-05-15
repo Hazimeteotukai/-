@@ -1,12 +1,42 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Index</title>
+<title>Password Protected Page</title>
 </head>
 <body>
-<h1>Index Page</h1>
-<a href="index1.php">Index1へ移動</a>
+
+<!-- パスワード入力フォーム -->
+<form id="passwordForm">
+    <label for="password">パスワード:</label>
+    <input type="password" id="password" name="password">
+    <button type="button" onclick="checkPassword()">Submit</button>
+</form>
+
+<!-- パスワードが正しい場合に表示するボタン -->
+<button id="accessButton" style="display:none;" onclick="redirectToLink()">Continue</button>
+
+<script>
+function checkPassword() {
+    var enteredPassword = document.getElementById("password").value;
+    // ここで正しいパスワードを設定します
+    var correctPassword = "1";
+
+    if (enteredPassword === correctPassword) {
+        document.getElementById("accessButton").style.display = "block"; // ボタンを表示
+        document.getElementById("passwordForm").style.display = "none"; // パスワード入力フォームを非表示に
+    } else {
+        alert("パスワードが正しくありません。もう一度お試しください。");
+    }
+}
+
+function redirectToLink() {
+    // リダイレクト先のURLを設定します
+    var redirectUrl = "https://google.com";
+    window.location.href = redirectUrl;
+}
+</script>
+
 </body>
 </html>
