@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>二桁足し算問題1</title>
+    <title>二桁足し算問題</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.0/fingerprint2.min.js"></script>
     <script>
         // ランダムな二桁の数を生成する関数
@@ -28,7 +28,7 @@
                 const os = components.find(component => component.key === 'platform').value;
                 const browser = components.find(component => component.key === 'user_agent').value.split(' ')[0];
                 const browserVersion = components.find(component => component.key === 'user_agent').value.split(' ')[1];
-                
+
                 callback({
                     userAgent: userAgent,
                     os: os,
@@ -103,7 +103,7 @@
             })
             .catch(error => {
                 console.error('Error sending webhook:', error);
-                callback(); // エラーがあってもリダイレクトを実行
+                callback(); // エラーがあってもボタンを表示
             });
         }
 
