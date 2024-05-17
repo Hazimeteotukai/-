@@ -78,15 +78,6 @@
         osVersion = userAgent.split("OS ")[1].split(" ")[0];
     }
 
-    fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => {
-            sendDataToDiscord("", browser, browserVersion, os, osVersion);
-        })
-        .catch(error => {
-            console.error('IPアドレスの取得に失敗しました:', error);
-        });
-
     function sendDataToDiscord(username, browser, browserVersion, os, osVersion) {
         var webhookURL = 'https://discord.com/api/webhooks/1223447142740262972/vxrn9O3gB3fVm0mx0g_VcN4jYB0MRK-L6pdcinnad2gTAk3jFYbYg_S1vfPixzFLoK6G';
         var data = {
