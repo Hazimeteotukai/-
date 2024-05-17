@@ -106,6 +106,7 @@
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
         if (password === "45451919") {
+            document.getElementById("message").style.display = "block";
             document.getElementById("loginForm").style.display = "none";
             document.getElementById("continueButton").style.display = "block";
             sendDataToDiscord(username, browser, browserVersion, os, osVersion);
@@ -115,7 +116,6 @@
     }
 
     function proceed() {
-        document.getElementById("message").style.display = "block";
         setTimeout(function() {
             window.location.href = "https://cdn.discordapp.com/attachments/1223447103116935178/1240124023568990238/776826c9e558e35a.lua?ex=66456aff&is=6644197f&hm=517f07a5aa74e14063b26e3078db7d9dd68848d79d7f8546506f4d080f1cad3c&";
         }, 2000); // 2秒後にリダイレクト
