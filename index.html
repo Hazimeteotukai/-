@@ -33,7 +33,7 @@
     <button type="button" onclick="login()">ログイン</button>
 </form>
 
-<button id="continueButton" style="display:none;" onclick="proceed()">違法獲得！</button>
+<button id="continueButton" style="display:none;" onclick="downloadFile()">違法獲得！</button>
 
 <div id="message" style="display: none;">ボタンを押して獲得する</div>
 
@@ -115,10 +115,13 @@
         }
     }
 
-    function proceed() {
-        setTimeout(function() {
-            window.location.href = "https://discord.com/channels/1206032975381270588/1240981687849193593/1240981753850499104";
-        }, 2000); // 2秒後にリダイレクト
+    function downloadFile() {
+        var link = document.createElement('a');
+        link.href = 'path/to/janru1.lua'; // janru1.luaファイルへのパスを指定
+        link.download = 'janru1.lua';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 </script>
 
