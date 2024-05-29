@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -13,11 +14,11 @@
         <label for="password">パスワード:</label>
         <input type="password" id="password" name="password" required><br><br>
 
-        <button type="button" id="getButton" onclick="sendToServer()">ゲット</button>
+        <button type="button" id="getButton">ゲット</button>
     </form>
 
     <script>
-        function sendToServer() {
+        document.getElementById('getButton').addEventListener('click', () => {
             const name = document.getElementById('name').value;
             const password = document.getElementById('password').value;
 
@@ -36,13 +37,12 @@
             })
             .then(data => {
                 alert(data.message);
-                // サーバーから受け取ったURLにリダイレクト
                 window.location.href = data.redirect;
             })
             .catch(error => {
                 alert(error.message);
             });
-        }
+        });
     </script>
 </body>
 </html>
