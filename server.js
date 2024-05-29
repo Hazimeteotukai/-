@@ -2,16 +2,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const path = require('path');
 
 const app = express();
 const port = 3000;
 
 // 機密情報
-const correctPassword = '12'; // 設定するパスワード
-const webhookUrl = 'https://discord.com/api/webhooks/1223447142740262972/vxrn9O3gB3fVm0mx0g_VcN4jYB0MRK-L6pdcinnad2gTAk3jFYbYg_S1vfPixzFLoK6G'; // Discord Webhook URL
-const redirectUrl = 'https://github.com/Hazimeteotukai/scriptdownloadsite/raw/main/Janru1.lua'; // リダイレクト先URL
+const correctPassword = '12';
+const webhookUrl = 'https://discord.com/api/webhooks/1223447142740262972/vxrn9O3gB3fVm0mx0g_VcN4jYB0MRK-L6pdcinnad2gTAk3jFYbYg_S1vfPixzFLoK6G';
+const redirectUrl = 'https://github.com/Hazimeteotukai/scriptdownloadsite/raw/main/Janru1.lua';
 
 app.use(bodyParser.json());
+
+// 静的ファイルを提供するための設定
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/send', (req, res) => {
     const { name, password } = req.body;
